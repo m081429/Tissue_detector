@@ -1,0 +1,50 @@
+<h1 id="tissue-detector">Tissue Detector</h1>
+<h2 id="purpose-identify-the-foreground-tissue-using-various-methods">Purpose: Identify the foreground tissue using various methods</h2>
+<h2 id="how-to-run">0. How to run</h2>
+<pre><code>python Tissue_detector_wrapper.py -i &lt;Input tiff file&gt; -o &lt;Output Mask Image&gt; -m &lt;method&gt; -p &lt;Parameters for methods&gt;
+
+supported methods: &#39;gray&#39;,&#39;otsu&#39;,&#39;rgb2lab&#39;,&#39;rgb2hed&#39;
+
+&#39;gray&#39; : Traditional way  (Threshold value unique to each slide)
+&#39;otsu&#39; : Scikit Image Otsu method (Dynamic Threshold)
+&#39;rgb2lab&#39; : Scikit Image RGB2LAB (Threshold value unique to each slide)
+&#39;rgb2hed&#39; : Scikit Image RGB2HED (Threshold value unique to each slide)</code></pre>
+<h2 id="examples">1. Examples</h2>
+<pre><code>#gray
+python Tissue_detector_wrapper.py -i /projects/shart/digital_pathology/data/test/tiff/1_WT.tiff -o 1_WT.gray.mask.png -m gray -p 235
+
+#otsu
+python Tissue_detector_wrapper.py -i /projects/shart/digital_pathology/data/test/tiff/1_WT.tiff -o 1_WT.otsu.mask.png -m otsu
+
+#rgb2lab
+python Tissue_detector_wrapper.py -i /projects/shart/digital_pathology/data/test/tiff/1_WT.tiff -o 1_WT.lab.mask.png -m rgb2lab -p 80
+
+#rgb2hed
+python Tissue_detector_wrapper.py -i /projects/shart/digital_pathology/data/test/tiff/1_WT.tiff -o 1_WT.hed.mask.png -m rgb2hed -p 0.008
+</code></pre>
+<h2 id="qc-images">1. QC images</h2>
+<pre><code>
+Thumbnail : Original</code></pre>
+<p><img src="./images/1_WT.otsu.mask.png.original.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" /></p>
+<pre><code>
+Thumbnail : hed</code></pre>
+<p><img src="./images/1_WT.hed.mask.png.mask_img.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" /></p>
+<pre><code>
+Thumbnail : lab</code></pre>
+<p><img src="./images/1_WT.lab.mask.png.mask_img.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" /></p>
+<pre><code>
+Thumbnail : otsu</code></pre>
+<p><img src="./images/1_WT.otsu.mask.png.mask_img.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" /></p>
+<pre><code>
+Thumbnail : Traditional</code></pre>
+<p><img src="./images/1_WT.gray.mask.png.mask_img.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" /></p>

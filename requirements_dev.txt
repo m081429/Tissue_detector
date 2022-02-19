@@ -1,0 +1,4 @@
+openslide
+pillow
+scikit-image
+matplotlib
